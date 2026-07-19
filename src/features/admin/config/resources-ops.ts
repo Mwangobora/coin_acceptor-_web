@@ -1,10 +1,17 @@
-import { KeyRound, LockKeyhole, PlugZap, RadioTower } from "lucide-react";
+import {
+  CreditCard,
+  KeyRound,
+  LockKeyhole,
+  PlugZap,
+  RadioTower,
+} from "lucide-react";
 
 import type { ResourceConfig } from "../types/resource";
 import {
   commandFields,
   credentialFields,
   lockerFields,
+  paymentRefundFields,
   portFields,
 } from "./operations";
 
@@ -90,6 +97,29 @@ export const opsResources: ResourceConfig[] = [
     createFields: [
       { name: "deviceId", label: "Device ID", required: true },
       ...commandFields,
+    ],
+  },
+  {
+    key: "payments",
+    title: "Payments",
+    description: "Monitor coin and QR payments and run eligible refunds.",
+    path: "/payments",
+    icon: CreditCard,
+    columns: [
+      "paymentReference",
+      "paymentMethod",
+      "status",
+      "expectedAmountMinor",
+      "receivedAmountMinor",
+      "initiatedAt",
+    ],
+    searchParam: "search",
+    rowActions: [
+      {
+        label: "Refund",
+        path: (row) => `/payments/${row.id}/refund`,
+        fields: paymentRefundFields,
+      },
     ],
   },
 ];

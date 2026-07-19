@@ -1,5 +1,5 @@
-import { PaymentConsole } from "@/features/admin/components/payment-console";
+import { PaymentsPage as PaymentsFeaturePage } from "@/features/payments/payments-page";
 
-export default function PaymentsPage() {
-  return <PaymentConsole />;
+export default function PaymentsRoute() {
+  return <PaymentsFeaturePage />;
 }

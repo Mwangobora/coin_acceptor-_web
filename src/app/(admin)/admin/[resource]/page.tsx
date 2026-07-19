@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { ResourcePage } from "@/features/admin/components/resource-page";
+import { ResourceRoutePage } from "@/features/admin/components/resource-route-page";
 import { resourceMap } from "@/features/admin/config/resources";
 
 export default async function AdminResourcePage({
@@ -11,5 +11,5 @@ export default async function AdminResourcePage({
   const { resource } = await params;
   const config = resourceMap[resource];
   if (!config) notFound();
-  return <ResourcePage config={config} />;
+  return <ResourceRoutePage resource={resource} />;
 }
