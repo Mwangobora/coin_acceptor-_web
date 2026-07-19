@@ -4,6 +4,7 @@ import { PanelLeftClose, PanelLeftOpen } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { adminNavigation } from "@/config/admin-navigation";
+import { cn } from "@/lib/utils";
 import { useUiStore } from "@/stores/ui-store";
 
 import { AppLogo } from "./app-logo";
@@ -15,19 +16,33 @@ export function AdminSidebar() {
   const ToggleIcon = compact ? PanelLeftOpen : PanelLeftClose;
 
   return (
-    <aside className="border-sidebar-border bg-sidebar text-sidebar-foreground sticky top-0 hidden h-dvh shrink-0 border-r lg:block">
-      <div className={compact ? "w-20" : "w-72"}>
-        <div className="border-sidebar-border flex h-16 items-center justify-between gap-2 border-b px-4">
+    <aside className="border-sidebar-border bg-sidebar text-sidebar-foreground fixed inset-y-0 left-0 z-50 hidden h-dvh border-r lg:block">
+      <div
+        className={
+          compact
+            ? "h-full w-20 transition-[width] duration-200"
+            : "h-full w-72 transition-[width] duration-200"
+        }
+      >
+        <div
+          className={cn(
+            "border-sidebar-border relative flex h-16 items-center border-b",
+            compact ? "justify-center px-2" : "justify-between gap-2 px-4",
+          )}
+        >
           <AppLogo compact={compact} />
           <Button
             type="button"
             variant="ghost"
             size="icon"
             aria-label={compact ? "Expand sidebar" : "Collapse sidebar"}
-            className="text-sidebar-foreground hover:bg-sidebar-accent"
+            className={cn(
+              "bg-sidebar-accent text-sidebar-accent-foreground border-sidebar-border hover:bg-sidebar-primary hover:text-sidebar-primary-foreground border shadow-sm",
+              compact && "absolute top-1/2 -right-3 size-9 -translate-y-1/2",
+            )}
             onClick={toggleSidebar}
           >
-            <ToggleIcon size={18} aria-hidden="true" />
+            <ToggleIcon size={17} aria-hidden="true" />
           </Button>
         </div>
         <nav aria-label="Admin navigation" className="flex flex-col gap-1 p-3">
