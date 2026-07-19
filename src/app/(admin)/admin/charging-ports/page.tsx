@@ -1,4 +1,4 @@
-import { ChargingPortsPage } from "@/features/charging-ports/charging-ports-page";
+import { ChargingPortsPage } from "@/features/charging-ports";
 
 export default function ChargingPortsRoute() {
   return <ChargingPortsPage />;

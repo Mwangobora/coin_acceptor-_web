@@ -1,4 +1,4 @@
-import { DeviceCommandsPage } from "@/features/device-commands/device-commands-page";
+import { DeviceCommandsPage } from "@/features/device-commands";
 
 export default function DeviceCommandsRoute() {
   return <DeviceCommandsPage />;

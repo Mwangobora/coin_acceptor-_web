@@ -1,4 +1,4 @@
-import { DeviceEventsPage } from "@/features/device-ingestion/device-events-page";
+import { DeviceEventsPage } from "@/features/device-ingestion";
 
 export default function DeviceEventsRoute() {
   return <DeviceEventsPage />;

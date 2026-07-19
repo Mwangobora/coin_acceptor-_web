@@ -1,4 +1,4 @@
-import { MobileConsole } from "@/features/admin/components/mobile-console";
+import { MobileConsole } from "@/features/mobile";
 
 export default function MobilePage() {
   return <MobileConsole />;

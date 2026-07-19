@@ -1,4 +1,4 @@
-import { DevicesPage } from "@/features/devices/devices-page";
+import { DevicesPage } from "@/features/devices";
 
 export default function DevicesRoute() {
   return <DevicesPage />;

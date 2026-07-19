@@ -1,18 +1,13 @@
 import { apiClient } from "@/lib/api/api-client";
 
-type DeviceInput = {
-  apiKey: string;
-  path: string;
-  method?: "get" | "post";
-  body?: unknown;
-};
+import type { DeviceRequestInput } from "../types/mobile.types";
 
 export async function deviceRequest<T = unknown>({
   apiKey,
   path,
   method = "get",
   body,
-}: DeviceInput) {
+}: DeviceRequestInput) {
   const { data } = await apiClient.request<T>({
     url: path,
     method,

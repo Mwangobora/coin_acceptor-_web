@@ -1,4 +1,4 @@
-import { LockersPage } from "@/features/lockers/lockers-page";
+import { LockersPage } from "@/features/lockers";
 
 export default function LockersRoute() {
   return <LockersPage />;

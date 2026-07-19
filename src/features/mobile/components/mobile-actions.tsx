@@ -2,17 +2,21 @@
 
 import { Button } from "@/components/ui/button";
 
+import type { DeviceRequestMethod } from "../types/mobile.types";
+
+type MobileActionsProps = {
+  busy: boolean;
+  reference: string;
+  payload: string;
+  run: (path: string, method: DeviceRequestMethod, body?: unknown) => void;
+};
+
 export function MobileActions({
   busy,
   run,
   reference,
   payload,
-}: {
-  busy: boolean;
-  reference: string;
-  payload: string;
-  run: (path: string, method: "get" | "post", body?: unknown) => void;
-}) {
+}: MobileActionsProps) {
   const json = () => parseJson(payload);
   return (
     <div className="grid gap-2 sm:grid-cols-2">

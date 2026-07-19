@@ -1,4 +1,4 @@
-import { PaymentsPage as PaymentsFeaturePage } from "@/features/payments/payments-page";
+import { PaymentsPage as PaymentsFeaturePage } from "@/features/payments";
 
 export default function PaymentsRoute() {
   return <PaymentsFeaturePage />;
