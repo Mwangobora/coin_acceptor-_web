@@ -5,7 +5,8 @@ const envSchema = z.object({
 });
 
 const parsedEnv = envSchema.safeParse({
-  NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL,
+  NEXT_PUBLIC_API_BASE_URL:
+    process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000/api/v1",
 });
 
 if (!parsedEnv.success) {

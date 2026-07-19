@@ -15,6 +15,11 @@ export const apiClient = axios.create({
   },
 });
 
+apiClient.interceptors.request.use((config) => {
+  config.headers.set("X-Requested-With", "XMLHttpRequest");
+  return config;
+});
+
 apiClient.interceptors.response.use(
   (response) => response,
   (error: unknown) => Promise.reject(normalizeApiError(error)),

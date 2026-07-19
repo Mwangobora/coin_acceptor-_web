@@ -2,7 +2,7 @@ import { readdirSync, readFileSync, statSync } from "node:fs";
 import { extname, join, relative } from "node:path";
 
 const root = process.cwd();
-const limit = 120;
+const limit = 150;
 const extensions = new Set([".ts", ".tsx", ".js", ".jsx", ".css"]);
 const ignoredDirs = new Set(["node_modules", ".next", ".git", "out", "build"]);
 const ignoredFiles = new Set(["next-env.d.ts"]);

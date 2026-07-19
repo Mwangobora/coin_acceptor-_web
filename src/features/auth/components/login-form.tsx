@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Zap } from "lucide-react";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
@@ -9,7 +10,10 @@ import { Input } from "@/components/ui/input";
 import { loginSchema } from "@/features/auth/schemas/login.schema";
 import type { LoginInput } from "@/features/auth/types/login.types";
 
+import { useLogin } from "../hooks/use-auth";
+
 export function LoginForm() {
+  const login = useLogin();
   const form = useForm<LoginInput>({
     resolver: zodResolver(loginSchema),
     defaultValues: { email: "", password: "" },
@@ -30,7 +34,7 @@ export function LoginForm() {
       </div>
       <form
         className="grid gap-4"
-        onSubmit={form.handleSubmit(() => undefined)}
+        onSubmit={form.handleSubmit((values) => login.mutate(values))}
       >
         <label className="grid gap-2 text-sm font-medium">
           Email address
@@ -50,8 +54,15 @@ export function LoginForm() {
           />
           <FieldError message={form.formState.errors.password?.message} />
         </label>
-        <Button type="submit" className="mt-2 w-full">
-          Sign in unavailable
+        <Button
+          type="submit"
+          className="mt-2 w-full"
+          disabled={login.isPending}
+        >
+          {login.isPending ? "Signing in..." : "Sign in"}
+        </Button>
+        <Button asChild type="button" variant="ghost" className="w-full">
+          <Link href="/register">Register operator</Link>
         </Button>
       </form>
     </section>

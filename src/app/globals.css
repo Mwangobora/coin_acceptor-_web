@@ -106,6 +106,21 @@ body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
+button,
+[role="button"],
+a,
+summary,
+select,
+input[type="checkbox"],
+input[type="radio"] {
+  cursor: pointer;
+}
+
+input,
+textarea {
+  cursor: text;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

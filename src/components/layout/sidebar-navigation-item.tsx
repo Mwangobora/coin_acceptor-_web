@@ -19,7 +19,9 @@ export function SidebarNavigationItem({
   compact = false,
 }: SidebarNavigationItemProps) {
   const pathname = usePathname();
-  const isActive = item.href === pathname;
+  const isActive = item.href
+    ? item.href === pathname || pathname.startsWith(`${item.href}/`)
+    : false;
   const Icon = item.icon;
   const content = (
     <>

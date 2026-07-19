@@ -11,8 +11,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useCurrentUser, useLogout } from "@/features/auth/hooks/use-auth";
 
 export function UserMenu() {
+  const user = useCurrentUser();
+  const logout = useLogout();
+  const name = user.data?.fullName ?? "Admin Operator";
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -26,10 +31,12 @@ export function UserMenu() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>Admin Operator</DropdownMenuLabel>
+        <DropdownMenuLabel>{name}</DropdownMenuLabel>
         <DropdownMenuSeparator className="bg-border my-1 h-px" />
-        <DropdownMenuItem>Profile unavailable</DropdownMenuItem>
-        <DropdownMenuItem>Sign out unavailable</DropdownMenuItem>
+        <DropdownMenuItem>{user.data?.email ?? "Signed in"}</DropdownMenuItem>
+        <DropdownMenuItem onSelect={() => logout.mutate()}>
+          Sign out
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
