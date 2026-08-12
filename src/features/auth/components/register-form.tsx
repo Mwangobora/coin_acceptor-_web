@@ -5,7 +5,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { useForm } from "react-hook-form";
 
-import { Button } from "@/components/ui/button";
+import ActionButton from "@/components/ui/action-button";
 import { Input } from "@/components/ui/input";
 
 import { useRegisterUser } from "../hooks/use-auth";
@@ -61,12 +61,12 @@ export function RegisterForm() {
             autoComplete="new-password"
           />
         </Field>
-        <Button disabled={registerUser.isPending}>
+        <ActionButton disabled={registerUser.isPending}>
           {registerUser.isPending ? "Registering..." : "Register"}
-        </Button>
-        <Button asChild type="button" variant="ghost">
+        </ActionButton>
+        <ActionButton asChild type="button" action="ghost">
           <Link href="/login">Back to sign in</Link>
-        </Button>
+        </ActionButton>
       </form>
     </section>
   );

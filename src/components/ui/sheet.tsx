@@ -6,7 +6,7 @@ import type { ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-import { Button } from "./button";
+import ActionButton from "./action-button";
 
 export const Sheet = SheetPrimitive.Root;
 export const SheetTrigger = SheetPrimitive.Trigger;
@@ -29,16 +29,16 @@ export function SheetContent({
         )}
         {...props}
       >
-        <Button
+        <ActionButton
           asChild
-          variant="ghost"
+          action="ghost"
           size="icon"
           className="text-sidebar-foreground hover:bg-sidebar-accent absolute top-3 right-3"
         >
           <SheetPrimitive.Close aria-label="Close navigation">
             <X size={18} aria-hidden="true" />
           </SheetPrimitive.Close>
-        </Button>
+        </ActionButton>
         {children}
       </SheetPrimitive.Content>
     </SheetPrimitive.Portal>

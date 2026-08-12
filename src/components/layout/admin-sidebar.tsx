@@ -2,7 +2,7 @@
 
 import { PanelLeftClose, PanelLeftOpen } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import ActionButton from "@/components/ui/action-button";
 import { adminNavigation } from "@/config/admin-navigation";
 import { cn } from "@/lib/utils";
 import { useUiStore } from "@/stores/ui-store";
@@ -31,9 +31,9 @@ export function AdminSidebar() {
           )}
         >
           <AppLogo compact={compact} />
-          <Button
+          <ActionButton
             type="button"
-            variant="ghost"
+            action="ghost"
             size="icon"
             aria-label={compact ? "Expand sidebar" : "Collapse sidebar"}
             className={cn(
@@ -43,7 +43,7 @@ export function AdminSidebar() {
             onClick={toggleSidebar}
           >
             <ToggleIcon size={17} aria-hidden="true" />
-          </Button>
+          </ActionButton>
         </div>
         <nav aria-label="Admin navigation" className="flex flex-col gap-1 p-3">
           {adminNavigation.map((item) => (

@@ -7,15 +7,12 @@ import {
   LockKeyhole,
   MapPin,
   PlugZap,
-  RadioTower,
   ScrollText,
   Settings,
   ShieldCheck,
-  Smartphone,
   Timer,
   TriangleAlert,
   Users,
-  Waves,
 } from "lucide-react";
 
 import type { AdminNavigationItem } from "@/types/navigation";
@@ -27,11 +24,9 @@ export const adminNavigation: AdminNavigationItem[] = [
   { title: "Credentials", href: "/admin/device-credentials", icon: KeyRound },
   { title: "Lockers", href: "/admin/lockers", icon: LockKeyhole },
   { title: "Charging Ports", href: "/admin/charging-ports", icon: PlugZap },
-  { title: "Commands", href: "/admin/device-commands", icon: RadioTower },
   { title: "Events", href: "/admin/device-events", icon: Timer },
-  { title: "Telemetry", href: "/admin/device-telemetry", icon: Waves },
   { title: "Payments", href: "/admin/payments", icon: CreditCard },
-  { title: "Mobile APIs", href: "/admin/mobile", icon: Smartphone },
+
   { title: "Users", href: "/admin/users", icon: Users },
   { title: "Roles", href: "/admin/roles", icon: ShieldCheck },
   { title: "Permissions", href: "/admin/permissions", icon: ShieldCheck },

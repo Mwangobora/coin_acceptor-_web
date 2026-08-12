@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import ActionButton from "@/components/ui/action-button";
 
 export default function GlobalError({ reset }: { reset: () => void }) {
   return (
@@ -12,9 +12,9 @@ export default function GlobalError({ reset }: { reset: () => void }) {
             <p className="mt-2 text-sm">
               The admin interface could not recover automatically.
             </p>
-            <Button type="button" className="mt-4" onClick={reset}>
+            <ActionButton type="button" className="mt-4" onClick={reset}>
               Try again
-            </Button>
+            </ActionButton>
           </section>
         </main>
       </body>

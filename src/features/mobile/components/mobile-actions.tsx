@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import ActionButton from "@/components/ui/action-button";
 
 import type { DeviceRequestMethod } from "../types/mobile.types";
 
@@ -20,44 +20,44 @@ export function MobileActions({
   const json = () => parseJson(payload);
   return (
     <div className="grid gap-2 sm:grid-cols-2">
-      <Button
+      <ActionButton
         disabled={busy}
         onClick={() => run("/device-ingestion/charging-packages", "get")}
       >
         Packages
-      </Button>
-      <Button
+      </ActionButton>
+      <ActionButton
         disabled={busy}
         onClick={() => run("/device-ingestion/commands", "get")}
       >
         Commands
-      </Button>
-      <Button
+      </ActionButton>
+      <ActionButton
         disabled={busy}
         onClick={() => run("/device-ingestion/events", "post", json())}
       >
         Ingest event
-      </Button>
-      <Button
+      </ActionButton>
+      <ActionButton
         disabled={busy}
         onClick={() => run("/device-ingestion/payments", "post", json())}
       >
         Start payment
-      </Button>
-      <Button
+      </ActionButton>
+      <ActionButton
         disabled={busy || !reference}
         onClick={() => run(`/device-ingestion/payments/${reference}`, "get")}
       >
         Payment status
-      </Button>
-      <Button
+      </ActionButton>
+      <ActionButton
         disabled={busy || !reference}
         onClick={() =>
           run(`/device-ingestion/payments/${reference}/cancel`, "post", json())
         }
       >
         Cancel payment
-      </Button>
+      </ActionButton>
     </div>
   );
 }

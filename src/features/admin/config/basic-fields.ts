@@ -18,7 +18,6 @@ export const jsonPayloadField: FormField = {
 };
 
 export const stationFields: FormField[] = [
-  { name: "code", label: "Code", required: true },
   { name: "name", label: "Name", required: true },
   { name: "stationType", label: "Type", required: true },
   { name: "region", label: "Region", required: true },

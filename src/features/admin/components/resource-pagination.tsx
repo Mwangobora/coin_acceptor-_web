@@ -2,7 +2,7 @@
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import ActionButton from "@/components/ui/action-button";
 
 export function Pagination({
   page,
@@ -19,24 +19,24 @@ export function Pagination({
         Page {page} of {Math.max(total, 1)}
       </span>
       <div className="flex gap-2">
-        <Button
-          variant="outline"
+        <ActionButton
+          action="outline"
           size="sm"
           disabled={page <= 1}
           onClick={() => onPage(page - 1)}
         >
           <ChevronLeft size={16} />
           Previous
-        </Button>
-        <Button
-          variant="outline"
+        </ActionButton>
+        <ActionButton
+          action="outline"
           size="sm"
           disabled={page >= total}
           onClick={() => onPage(page + 1)}
         >
           Next
           <ChevronRight size={16} />
-        </Button>
+        </ActionButton>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { EmptyState } from "@/components/shared";
-import { Button } from "@/components/ui/button";
+import ActionButton from "@/components/ui/action-button";
 
 export default function NotFound() {
   return (
@@ -11,9 +11,9 @@ export default function NotFound() {
           title="Page not found"
           description="The requested admin page is not available."
         />
-        <Button asChild>
+        <ActionButton asChild>
           <Link href="/admin">Return to admin</Link>
-        </Button>
+        </ActionButton>
       </div>
     </main>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import ActionButton from "@/components/ui/action-button";
 
 import type { ResourceRow, RowAction } from "../types/resource";
 
@@ -19,23 +19,23 @@ export function TableActions({
 }) {
   return (
     <div className="flex justify-end gap-1">
-      <Button size="sm" variant="outline" onClick={() => onView(row)}>
+      <ActionButton size="sm" action="info" onClick={() => onView(row)}>
         Details
-      </Button>
+      </ActionButton>
       {onEdit ? (
-        <Button size="sm" variant="ghost" onClick={() => onEdit(row)}>
+        <ActionButton size="sm" action="edit" onClick={() => onEdit(row)}>
           Edit
-        </Button>
+        </ActionButton>
       ) : null}
       {actions?.map((action) => (
-        <Button
+        <ActionButton
           key={action.label}
           size="sm"
-          variant="ghost"
+          action="secondary"
           onClick={() => onAction?.(row, action)}
         >
           {action.label}
-        </Button>
+        </ActionButton>
       ))}
     </div>
   );

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { Button } from "@/components/ui/button";
+import ActionButton from "@/components/ui/action-button";
 
 import type { FormField, ResourceRow } from "../types/resource";
 import { FieldControl } from "./form-control";
@@ -44,7 +44,9 @@ export function ResourceForm({
           />
         </label>
       ))}
-      <Button disabled={busy}>{busy ? "Saving..." : submitLabel}</Button>
+      <ActionButton disabled={busy}>
+        {busy ? "Saving..." : submitLabel}
+      </ActionButton>
     </form>
   );
 }

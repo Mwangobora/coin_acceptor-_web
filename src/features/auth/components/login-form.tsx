@@ -5,7 +5,7 @@ import { Zap } from "lucide-react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 
-import { Button } from "@/components/ui/button";
+import ActionButton from "@/components/ui/action-button";
 import { Input } from "@/components/ui/input";
 import { loginSchema } from "@/features/auth/schemas/login.schema";
 import type { LoginInput } from "@/features/auth/types/login.types";
@@ -54,16 +54,16 @@ export function LoginForm() {
           />
           <FieldError message={form.formState.errors.password?.message} />
         </label>
-        <Button
+        <ActionButton
           type="submit"
           className="mt-2 w-full"
           disabled={login.isPending}
         >
           {login.isPending ? "Signing in..." : "Sign in"}
-        </Button>
-        <Button asChild type="button" variant="ghost" className="w-full">
+        </ActionButton>
+        <ActionButton asChild type="button" action="ghost" className="w-full">
           <Link href="/register">Register operator</Link>
-        </Button>
+        </ActionButton>
       </form>
     </section>
   );

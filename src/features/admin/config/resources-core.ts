@@ -19,9 +19,7 @@ export const coreResources: ResourceConfig[] = [
     columns: ["code", "name", "region", "district", "status", "totalDevices"],
     searchParam: "search",
     createFields: stationFields,
-    updateFields: stationFields.filter(
-      (field) => !["code"].includes(field.name),
-    ),
+    updateFields: stationFields,
     rowActions: [
       {
         label: "Set status",

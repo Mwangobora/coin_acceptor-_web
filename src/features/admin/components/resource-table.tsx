@@ -8,7 +8,10 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
+import { motion } from "motion/react";
 import { useMemo, useState } from "react";
+
+import { DataTableContainer } from "@/components/shared";
 
 import type { ResourceRow, RowAction } from "../types/resource";
 import { display, label } from "./resource-detail";
@@ -54,55 +57,64 @@ export function ResourceTable({
   });
 
   return (
-    <div className="overflow-hidden rounded-lg border">
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[760px] text-sm">
-          <thead className="bg-muted">
-            {table.getHeaderGroups().map((group) => (
-              <tr key={group.id}>
-                {group.headers.map((header) => (
-                  <th
-                    key={header.id}
-                    className="px-3 py-3 text-left font-medium"
+    <DataTableContainer>
+      <table className="w-full min-w-[760px] text-sm">
+        <thead className="text-muted-foreground bg-muted/40 border-b text-xs">
+          {table.getHeaderGroups().map((group) => (
+            <tr key={group.id}>
+              {group.headers.map((header) => (
+                <th
+                  key={header.id}
+                  className="px-3 py-3 text-left font-semibold tracking-wide uppercase"
+                >
+                  <button
+                    className="flex cursor-pointer items-center gap-2"
+                    onClick={header.column.getToggleSortingHandler()}
                   >
-                    <button
-                      className="flex cursor-pointer items-center gap-2"
-                      onClick={header.column.getToggleSortingHandler()}
-                    >
-                      {flexRender(
-                        header.column.columnDef.header,
-                        header.getContext(),
-                      )}
-                    </button>
-                  </th>
-                ))}
-                <th className="px-3 py-3 text-right font-medium">Actions</th>
-              </tr>
-            ))}
-          </thead>
-          <tbody>
-            {table.getRowModel().rows.map((row) => (
-              <tr key={row.id} className="border-t">
-                {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id} className="max-w-56 px-3 py-3 align-top">
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
-                ))}
-                <td className="px-3 py-3 text-right">
-                  <TableActions
-                    row={row.original}
-                    actions={actions}
-                    onView={onView}
-                    onEdit={onEdit}
-                    onAction={onAction}
-                  />
+                    {flexRender(
+                      header.column.columnDef.header,
+                      header.getContext(),
+                    )}
+                  </button>
+                </th>
+              ))}
+              <th className="px-3 py-3 text-right font-semibold tracking-wide uppercase">
+                Actions
+              </th>
+            </tr>
+          ))}
+        </thead>
+        <tbody>
+          {table.getRowModel().rows.map((row, index) => (
+            <motion.tr
+              key={row.id}
+              className="hover:bg-muted/40 border-t"
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.15, delay: Math.min(index, 8) * 0.03 }}
+            >
+              {row.getVisibleCells().map((cell) => (
+                <td
+                  key={cell.id}
+                  className="text-card-foreground max-w-56 px-3 py-3 align-top"
+                >
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
+              ))}
+              <td className="px-3 py-3 text-right">
+                <TableActions
+                  row={row.original}
+                  actions={actions}
+                  onView={onView}
+                  onEdit={onEdit}
+                  onAction={onAction}
+                />
+              </td>
+            </motion.tr>
+          ))}
+        </tbody>
+      </table>
+    </DataTableContainer>
   );
 }
 

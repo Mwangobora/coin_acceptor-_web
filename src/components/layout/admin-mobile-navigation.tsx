@@ -2,7 +2,7 @@
 
 import { Menu } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import ActionButton from "@/components/ui/action-button";
 import {
   Sheet,
   SheetContent,
@@ -19,15 +19,15 @@ export function AdminMobileNavigation() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button
+        <ActionButton
           type="button"
-          variant="outline"
+          action="outline"
           size="icon"
           className="lg:hidden"
           aria-label="Open navigation"
         >
           <Menu size={20} aria-hidden="true" />
-        </Button>
+        </ActionButton>
       </SheetTrigger>
       <SheetContent>
         <div className="border-sidebar-border border-b p-4 pr-14">

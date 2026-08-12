@@ -10,6 +10,16 @@ import { metricSections } from "../config/dashboard-sections";
 import { useDashboardData } from "../hooks/use-dashboard";
 import { DashboardMiniTable } from "./dashboard-mini-table";
 
+const containerMotion = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.06 } },
+};
+
+const itemMotion = {
+  hidden: { opacity: 0, y: 8 },
+  show: { opacity: 1, y: 0 },
+};
+
 export function DashboardPage() {
   const data = useDashboardData();
   const totals = Object.fromEntries(
@@ -23,28 +33,40 @@ export function DashboardPage() {
           title="Admin Dashboard"
           description="Live backend overview across station, device, access, and audit APIs."
         />
-        <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <motion.section
+          className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4"
+          variants={containerMotion}
+          initial="hidden"
+          animate="show"
+        >
           {metricSections.map((metric) => (
-            <MetricCard
-              key={metric.key}
-              label={metric.label}
-              value={String(totals[metric.key] ?? 0)}
-              helper="Loaded from API"
-              icon={metric.icon}
-            />
+            <motion.div key={metric.key} variants={itemMotion}>
+              <MetricCard
+                label={metric.label}
+                value={String(totals[metric.key] ?? 0)}
+                helper="Loaded from API"
+                icon={metric.icon}
+              />
+            </motion.div>
           ))}
-        </section>
-        <section className="mt-6 grid gap-4 xl:grid-cols-2">
+        </motion.section>
+        <motion.section
+          className="mt-6 grid gap-4 xl:grid-cols-2"
+          variants={containerMotion}
+          initial="hidden"
+          animate="show"
+        >
           {data.map((item) => (
-            <DashboardMiniTable
-              key={item.config.key}
-              config={item.config}
-              rows={item.items}
-              loading={item.isLoading}
-              failed={item.isError}
-            />
+            <motion.div key={item.config.key} variants={itemMotion}>
+              <DashboardMiniTable
+                config={item.config}
+                rows={item.items}
+                loading={item.isLoading}
+                failed={item.isError}
+              />
+            </motion.div>
           ))}
-        </section>
+        </motion.section>
       </motion.div>
     </PageContainer>
   );

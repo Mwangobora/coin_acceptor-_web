@@ -2,7 +2,7 @@
 
 import { Plus, RefreshCw, Search } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import ActionButton from "@/components/ui/action-button";
 import { Input } from "@/components/ui/input";
 
 export function ResourceToolbar(props: {
@@ -25,15 +25,15 @@ export function ResourceToolbar(props: {
           onChange={(event) => props.onSearch(event.target.value)}
         />
       </div>
-      <Button variant="outline" onClick={props.onRefresh}>
+      <ActionButton action="outline" onClick={props.onRefresh}>
         <RefreshCw size={16} />
         Refresh
-      </Button>
+      </ActionButton>
       {props.canCreate ? (
-        <Button onClick={props.onCreate}>
+        <ActionButton onClick={props.onCreate}>
           <Plus size={16} />
           Create
-        </Button>
+        </ActionButton>
       ) : null}
     </div>
   );

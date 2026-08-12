@@ -1,7 +1,6 @@
 import type { FormField } from "../types/resource";
 
 export const roleFields: FormField[] = [
-  { name: "code", label: "Code", required: true },
   { name: "name", label: "Name", required: true },
   { name: "description", label: "Description", kind: "textarea" },
 ];

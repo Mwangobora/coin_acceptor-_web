@@ -20,7 +20,7 @@ export function MobileConsole() {
         description="Exercise device-facing package, payment, command, and event APIs."
       />
       <div className="grid gap-4 xl:grid-cols-[420px_1fr]">
-        <section className="bg-card grid gap-4 rounded-lg border p-5">
+        <section className="bg-card grid gap-4 rounded-xl border p-5">
           <Header />
           <label className="grid gap-2 text-sm font-medium">
             Device API key
@@ -50,7 +50,7 @@ export function MobileConsole() {
             payload={console.payload}
           />
         </section>
-        <section className="bg-card rounded-lg border p-5">
+        <section className="bg-card rounded-xl border p-5">
           <h2 className="mb-3 font-semibold">Response</h2>
           <pre className="bg-muted max-h-[70dvh] overflow-auto rounded-md p-4 text-xs">
             {JSON.stringify(

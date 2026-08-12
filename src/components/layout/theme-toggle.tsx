@@ -3,16 +3,16 @@
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
-import { Button } from "@/components/ui/button";
+import ActionButton from "@/components/ui/action-button";
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
 
   return (
-    <Button
+    <ActionButton
       type="button"
-      variant="ghost"
+      action="ghost"
       size="icon"
       aria-label="Toggle theme"
       onClick={() => setTheme(isDark ? "light" : "dark")}
@@ -22,6 +22,6 @@ export function ThemeToggle() {
       ) : (
         <Moon size={18} aria-hidden="true" />
       )}
-    </Button>
+    </ActionButton>
   );
 }

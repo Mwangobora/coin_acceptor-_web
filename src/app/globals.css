@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
+  color-scheme: light;
   --radius: 0.625rem;
   --background: #f4f4f5;
   --foreground: #18181b;
@@ -8,32 +11,32 @@
   --card-foreground: #18181b;
   --popover: #ffffff;
   --popover-foreground: #18181b;
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
+  --primary: #f97316;
+  --primary-hover: #ea580c;
   --primary-foreground: #ffffff;
-  --secondary: #ede9fe;
-  --secondary-foreground: #4c1d95;
+  --secondary: #e4e4e7;
+  --secondary-foreground: #27272a;
   --muted: #f4f4f5;
   --muted-foreground: #71717a;
-  --accent: #dbeafe;
-  --accent-foreground: #1d4ed8;
+  --accent: #ffedd5;
+  --accent-foreground: #c2410c;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
   --border: #d4d4d8;
   --input: #d4d4d8;
-  --ring: #2563eb;
+  --ring: #f97316;
   --sidebar: #18181b;
   --sidebar-foreground: #fafafa;
-  --sidebar-primary: #2563eb;
+  --sidebar-primary: #f97316;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #27272a;
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #27272a;
-  --chart-1: #2563eb;
-  --chart-2: #7c3aed;
-  --chart-3: #16a34a;
-  --chart-4: #f59e0b;
-  --chart-5: #f97316;
+  --chart-1: #f97316;
+  --chart-2: #ef4444;
+  --chart-3: #fbbf24;
+  --chart-4: #9a3412;
+  --chart-5: #fde68a;
   --status-online: #22c55e;
   --status-offline: #ef4444;
   --status-charging: #16a34a;
@@ -52,6 +55,7 @@
 }
 
 .dark {
+  color-scheme: dark;
   --background: #09090b;
   --foreground: #fafafa;
   --card: #18181b;
@@ -62,8 +66,8 @@
   --secondary-foreground: #fafafa;
   --muted: #18181b;
   --muted-foreground: #a1a1aa;
-  --accent: #1e3a8a;
-  --accent-foreground: #dbeafe;
+  --accent: #7c2d12;
+  --accent-foreground: #fed7aa;
   --border: #27272a;
   --input: #27272a;
   --sidebar: #18181b;
@@ -96,6 +100,14 @@
   --color-sidebar-border: var(--sidebar-border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--border);
+  }
 }
 
 body {

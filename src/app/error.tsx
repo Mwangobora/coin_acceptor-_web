@@ -1,7 +1,7 @@
 "use client";
 
 import { ErrorState } from "@/components/shared";
-import { Button } from "@/components/ui/button";
+import ActionButton from "@/components/ui/action-button";
 
 export default function Error({
   reset,
@@ -13,9 +13,9 @@ export default function Error({
     <main className="bg-background flex min-h-dvh items-center justify-center px-4">
       <div className="grid max-w-md gap-4">
         <ErrorState description="Refresh the admin interface and try again." />
-        <Button type="button" onClick={reset}>
+        <ActionButton type="button" onClick={reset}>
           Try again
-        </Button>
+        </ActionButton>
       </div>
     </main>
   );

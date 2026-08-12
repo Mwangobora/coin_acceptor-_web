@@ -2,7 +2,7 @@
 
 import { User } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import ActionButton from "@/components/ui/action-button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,14 +21,14 @@ export function UserMenu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
+        <ActionButton
           type="button"
-          variant="outline"
+          action="outline"
           size="icon"
           aria-label="User menu"
         >
           <User size={18} aria-hidden="true" />
-        </Button>
+        </ActionButton>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuLabel>{name}</DropdownMenuLabel>
